@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premsons Infra — Admin Panel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--gold:#C9A84C;--dark:#1A1A1A;--bg:#F8F7F4;--white:#FFFFFF;--border:#E8E4DC;--muted:#888780;--text:#2C2C2A;--red:#E24B4A;--green:#1D9E75;--blue:#378ADD;--amber:#BA7517}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+/* LOGIN */
+#login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;background:var(--dark)}
+.login-box{background:var(--white);border-radius:12px;padding:2.5rem;width:340px}
+.login-logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--dark);margin-bottom:4px}
+.login-sub{font-size:12px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:2rem}
+.login-box input{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:6px;font-size:14px;font-family:'DM Sans',sans-serif;margin-bottom:10px;background:var(--bg)}
+.login-box input:focus{outline:none;border-color:var(--gold)}
+.login-btn{width:100%;padding:12px;background:var(--gold);color:#fff;border:none;border-radius:6px;font-size:15px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;margin-top:4px}
+.login-btn:hover{opacity:.88}
+.login-err{font-size:13px;color:var(--red);margin-top:8px;display:none}
+
+/* DASHBOARD */
+#dashboard{display:none}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:220px;background:var(--dark);padding:1.5rem 1rem;z-index:10}
+.sidebar-logo{font-family:'Playfair Display',serif;font-size:18px;color:#fff;margin-bottom:4px}
+.sidebar-sub{font-size:10px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:2rem}
+.sidebar-nav a{display:flex;align-items:center;gap:10px;padding:10px 12px;color:rgba(255,255,255,.6);text-decoration:none;border-radius:6px;font-size:14px;margin-bottom:4px;cursor:pointer;transition:all .2s}
+.sidebar-nav a.active,.sidebar-nav a:hover{background:rgba(201,168,76,.15);color:var(--gold)}
+.sidebar-bottom{position:absolute;bottom:1.5rem;left:1rem;right:1rem}
+.logout-btn{width:100%;padding:8px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);border:none;border-radius:6px;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer}
+.logout-btn:hover{background:rgba(255,255,255,.15);color:#fff}
+
+.main{margin-left:220px;padding:2rem}
+.page-title{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;margin-bottom:1.5rem}
+
+/* STATS GRID */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:2rem}
+.stat-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.2rem}
+.stat-card .num{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--gold)}
+.stat-card .lbl{font-size:12px;color:var(--muted);margin-top:2px}
+.stat-card.today .num{color:var(--green)}
+.stat-card.month .num{color:var(--blue)}
+
+/* FILTERS */
+.filters{display:flex;gap:10px;margin-bottom:1.2rem;flex-wrap:wrap;align-items:center}
+.filters input{padding:8px 14px;border:1px solid var(--border);border-radius:6px;font-size:13px;font-family:'DM Sans',sans-serif;background:var(--white);color:var(--text);width:220px}
+.filters input:focus{outline:none;border-color:var(--gold)}
+.filter-btn{padding:8px 16px;border:1px solid var(--border);background:var(--white);border-radius:6px;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;color:var(--text);transition:all .2s}
+.filter-btn.active{background:var(--gold);color:#fff;border-color:var(--gold)}
+
+/* TABLE */
+.table-wrap{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+table{width:100%;border-collapse:collapse}
+th{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);padding:12px 16px;text-align:left;border-bottom:1px solid var(--border);background:var(--bg)}
+td{padding:14px 16px;border-bottom:1px solid var(--border);font-size:14px;vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#FAFAF8}
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:500}
+.badge.new{background:#E1F5EE;color:#0F6E56}
+.badge.in_progress{background:#FAEEDA;color:#854F0B}
+.badge.closed{background:#F1EFE8;color:#5F5E5A}
+.td-name{font-weight:500}
+.td-phone a{color:var(--blue);text-decoration:none;font-size:13px}
+.td-time{font-size:12px;color:var(--muted)}
+.action-row{display:flex;gap:6px;flex-wrap:wrap}
+.act-btn{padding:4px 10px;border-radius:4px;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;border:1px solid var(--border);background:var(--white);transition:all .2s}
+.act-btn:hover{background:var(--bg)}
+.act-btn.prog{color:var(--amber);border-color:var(--amber)}
+.act-btn.done{color:var(--green);border-color:var(--green)}
+.act-btn.del{color:var(--red);border-color:var(--red)}
+.act-btn.prog:hover{background:#FAEEDA}
+.act-btn.done:hover{background:#E1F5EE}
+.act-btn.del:hover{background:#FCEBEB}
+
+/* PAGINATION */
+.pagination{display:flex;gap:8px;margin-top:1rem;justify-content:flex-end}
+.page-btn{padding:6px 14px;border:1px solid var(--border);background:var(--white);border-radius:6px;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer}
+.page-btn.active{background:var(--gold);color:#fff;border-color:var(--gold)}
+.page-btn:hover:not(.active){background:var(--bg)}
+
+.empty{text-align:center;padding:3rem;color:var(--muted);font-size:14px}
+.toast{position:fixed;top:20px;right:20px;background:var(--dark);color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;z-index:999;display:none;animation:fadeIn .3s}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">Premsons Infra</div>
+    <div class="login-sub">Admin Panel</div>
+    <input type="text" id="uname" placeholder="Username" value="admin">
+    <input type="password" id="upass" placeholder="Password" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="login-btn" onclick="doLogin()">Login →</button>
+    <div class="login-err" id="login-err">Username ya password galat hai.</div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+  <div class="sidebar">
+    <div class="sidebar-logo">Premsons Infra</div>
+    <div class="sidebar-sub">Admin Panel</div>
+    <nav class="sidebar-nav">
+      <a class="active">📋 &nbsp;All Leads</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <button class="logout-btn" onclick="logout()">⎋ &nbsp;Logout</button>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="page-title">Inquiries Dashboard</div>
+
+    <div class="stats-grid" id="stats-grid">
+      <div class="stat-card"><div class="num">—</div><div class="lbl">Total Inquiries</div></div>
+      <div class="stat-card"><div class="num">—</div><div class="lbl">New Leads</div></div>
+      <div class="stat-card"><div class="num">—</div><div class="lbl">In Progress</div></div>
+      <div class="stat-card"><div class="num">—</div><div class="lbl">Closed</div></div>
+      <div class="stat-card today"><div class="num">—</div><div class="lbl">Today</div></div>
+      <div class="stat-card month"><div class="num">—</div><div class="lbl">This Month</div></div>
+    </div>
+
+    <div class="filters">
+      <input type="text" id="search-inp" placeholder="🔍  Search name, phone, project..." oninput="debounceLoad()">
+      <button class="filter-btn active" onclick="setStatus('all',this)">All</button>
+      <button class="filter-btn" onclick="setStatus('new',this)">New</button>
+      <button class="filter-btn" onclick="setStatus('in_progress',this)">In Progress</button>
+      <button class="filter-btn" onclick="setStatus('closed',this)">Closed</button>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>#</th><th>Name</th><th>Phone</th><th>Project</th><th>Message</th><th>Status</th><th>Date</th><th>Actions</th>
+        </tr></thead>
+        <tbody id="leads-tbody"><tr><td colspan="8" class="empty">Loading...</td></tr></tbody>
+      </table>
+    </div>
+    <div class="pagination" id="pagination"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+let TOKEN = localStorage.getItem('pi_token') || '';
+let currentStatus = 'all';
+let currentPage = 1;
+let debounceTimer;
+
+function showToast(msg, dur=2500){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.style.display='block';
+  setTimeout(()=>t.style.display='none', dur);
+}
+
+async function doLogin(){
+  const u=document.getElementById('uname').value;
+  const p=document.getElementById('upass').value;
+  const res=await fetch('/api/admin/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:u,password:p})});
+  const data=await res.json();
+  if(data.success){
+    TOKEN=data.token;
+    localStorage.setItem('pi_token',TOKEN);
+    document.getElementById('login-screen').style.display='none';
+    document.getElementById('dashboard').style.display='block';
+    loadStats();loadLeads();
+  } else {
+    document.getElementById('login-err').style.display='block';
+  }
+}
+
+function logout(){
+  localStorage.removeItem('pi_token');
+  TOKEN='';
+  document.getElementById('dashboard').style.display='none';
+  document.getElementById('login-screen').style.display='flex';
+}
+
+async function loadStats(){
+  const res=await fetch('/api/admin/stats',{headers:{Authorization:'Bearer '+TOKEN}});
+  const data=await res.json();
+  if(!data.success) return;
+  const s=data.stats;
+  const cards=document.querySelectorAll('#stats-grid .stat-card .num');
+  const vals=[s.total,s.newLeads,s.inProgress,s.closed,s.today,s.thisMonth];
+  cards.forEach((c,i)=>c.textContent=vals[i]);
+}
+
+async function loadLeads(){
+  const search=document.getElementById('search-inp').value;
+  const params=new URLSearchParams({page:currentPage,status:currentStatus,search});
+  const res=await fetch('/api/admin/inquiries?'+params,{headers:{Authorization:'Bearer '+TOKEN}});
+  const data=await res.json();
+  if(!data.success) return;
+
+  const tbody=document.getElementById('leads-tbody');
+  if(!data.data.length){
+    tbody.innerHTML='<tr><td colspan="8" class="empty">Koi inquiry nahi mili.</td></tr>';
+    document.getElementById('pagination').innerHTML='';
+    return;
+  }
+
+  tbody.innerHTML=data.data.map(r=>`
+    <tr>
+      <td style="color:var(--muted);font-size:13px">#${r.id}</td>
+      <td class="td-name">${esc(r.name)}</td>
+      <td><a href="tel:${esc(r.phone)}" class="td-phone">${esc(r.phone)}</a></td>
+      <td style="font-size:13px">${esc(r.project||'—')}</td>
+      <td style="font-size:13px;color:var(--muted);max-width:180px">${esc(r.message||'—').substring(0,60)}${r.message?.length>60?'…':''}</td>
+      <td><span class="badge ${r.status}">${statusLabel(r.status)}</span></td>
+      <td class="td-time">${r.created_at?.slice(0,16)||'—'}</td>
+      <td>
+        <div class="action-row">
+          ${r.status!=='in_progress'?`<button class="act-btn prog" onclick="updateStatus(${r.id},'in_progress')">In Progress</button>`:''}
+          ${r.status!=='closed'?`<button class="act-btn done" onclick="updateStatus(${r.id},'closed')">Close</button>`:''}
+          <button class="act-btn del" onclick="deleteInquiry(${r.id})">Delete</button>
+        </div>
+      </td>
+    </tr>`).join('');
+
+  const pg=document.getElementById('pagination');
+  pg.innerHTML='';
+  for(let i=1;i<=data.pages;i++){
+    const b=document.createElement('button');
+    b.className='page-btn'+(i===data.page?' active':'');
+    b.textContent=i;
+    b.onclick=()=>{currentPage=i;loadLeads()};
+    pg.appendChild(b);
+  }
+}
+
+async function updateStatus(id,status){
+  await fetch(`/api/admin/inquiries/${id}/status`,{method:'PATCH',headers:{'Content-Type':'application/json','Authorization':'Bearer '+TOKEN},body:JSON.stringify({status})});
+  showToast('✅ Status update ho gaya!');
+  loadStats();loadLeads();
+}
+
+async function deleteInquiry(id){
+  if(!confirm('Yeh inquiry delete karein?')) return;
+  await fetch(`/api/admin/inquiries/${id}`,{method:'DELETE',headers:{Authorization:'Bearer '+TOKEN}});
+  showToast('🗑️ Inquiry delete ho gayi.');
+  loadStats();loadLeads();
+}
+
+function setStatus(s,el){
+  currentStatus=s;currentPage=1;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  loadLeads();
+}
+
+function debounceLoad(){
+  clearTimeout(debounceTimer);
+  debounceTimer=setTimeout(()=>{currentPage=1;loadLeads()},400);
+}
+
+function statusLabel(s){return{new:'New 🟢',in_progress:'In Progress 🟡',closed:'Closed ⚪'}[s]||s}
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+
+// Auto-login if token exists
+if(TOKEN){
+  document.getElementById('login-screen').style.display='none';
+  document.getElementById('dashboard').style.display='block';
+  loadStats();loadLeads();
+}
+</script>
+</body>
+</html>
