@@ -5,500 +5,722 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Premsons Infra — Bihar's Trusted Builders Since 2000</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --gold:#C9A84C;--dark:#1A1A1A;--bg:#F8F7F4;--white:#fff;
-  --border:#E8E4DC;--muted:#888780;--text:#2C2C2A;--bg2:#F1EFE8;
+  --gold:#B8952A;--gold2:#D4AF5A;--dark:#111008;--cream:#F5F0E8;
+  --text:#1C1A12;--muted:#7A7060;--border:#E0D8C8;--bg:#FDFAF4;
+  --white:#FFFFFF;--section:#F7F3EA;
 }
-body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--bg)}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--cream)}
+::-webkit-scrollbar-thumb{background:var(--gold)}
 
 /* ── NAV ── */
-nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;border-bottom:0.5px solid var(--border);background:var(--white);position:sticky;top:0;z-index:100}
-.logo span:first-child{display:block;font-family:'Playfair Display',serif;font-size:20px;font-weight:900;color:var(--dark)}
-.logo span:nth-child(2){display:block;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase}
-.logo span.est{display:block;font-size:10px;color:var(--muted);letter-spacing:1px}
-.nav-links{display:flex;gap:24px}
-.nav-links a{font-size:14px;color:var(--muted);text-decoration:none;cursor:pointer;transition:color .2s}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:rgba(253,250,244,.92);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border);transition:all .3s}
+.logo-mark{display:flex;flex-direction:column}
+.logo-main{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;letter-spacing:.5px;color:var(--dark)}
+.logo-sub{font-size:9px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-top:-2px}
+.logo-est{font-size:9px;color:var(--muted);letter-spacing:1px}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{font-size:13px;font-weight:400;color:var(--muted);text-decoration:none;letter-spacing:.3px;transition:color .2s;cursor:pointer}
 .nav-links a:hover{color:var(--gold)}
-.nav-cta{background:var(--gold);color:#fff;border:none;padding:9px 20px;font-size:13px;font-family:'DM Sans',sans-serif;font-weight:500;border-radius:4px;cursor:pointer}
-.nav-cta:hover{opacity:.88}
-.hamburger{display:none;background:none;border:none;font-size:22px;cursor:pointer;color:var(--dark)}
-.mobile-menu{display:none;flex-direction:column;gap:0;background:var(--white);border-bottom:1px solid var(--border)}
-.mobile-menu a{padding:14px 2rem;font-size:15px;color:var(--text);border-bottom:0.5px solid var(--border);cursor:pointer;text-decoration:none}
-.mobile-menu.open{display:flex}
+.nav-cta{background:var(--dark);color:var(--cream);border:none;padding:9px 22px;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .2s}
+.nav-cta:hover{background:var(--gold)}
+.hamburger{display:none;background:none;border:none;font-size:20px;cursor:pointer;color:var(--dark)}
 
 /* ── HERO ── */
-.hero{position:relative;padding:4rem 2rem 3rem;overflow:hidden;border-bottom:0.5px solid var(--border)}
-.hero-bg{position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 30px,rgba(201,168,76,.04) 30px,rgba(201,168,76,.04) 31px);pointer-events:none}
-.since-badge{display:inline-flex;align-items:center;gap:8px;background:var(--bg2);border:0.5px solid var(--gold);border-radius:4px;padding:5px 14px;margin-bottom:1.2rem}
-.since-badge span{font-size:11px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;font-weight:500}
-.hero h1{font-family:'Playfair Display',serif;font-size:52px;font-weight:900;line-height:1.1;max-width:560px}
-.hero h1 em{color:var(--gold);font-style:normal}
-.hero p{margin:1.2rem 0 2rem;font-size:16px;color:var(--muted);max-width:480px;line-height:1.8}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
-.btn-dark{background:var(--dark);color:#fff;padding:13px 28px;font-size:14px;font-family:'DM Sans',sans-serif;font-weight:500;border:none;border-radius:4px;cursor:pointer}
-.btn-dark:hover{background:#333}
-.btn-outline{background:transparent;color:var(--text);padding:13px 28px;font-size:14px;font-family:'DM Sans',sans-serif;font-weight:500;border:1.5px solid var(--gold);border-radius:4px;cursor:pointer}
-.btn-outline:hover{background:var(--gold);color:#fff}
-.hero-stats{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2rem;border-top:0.5px solid var(--border);flex-wrap:wrap}
-.stat span:first-child{display:block;font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:var(--gold)}
-.stat span:last-child{font-size:12px;color:var(--muted);letter-spacing:.5px}
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding:0;position:relative;overflow:hidden}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:8rem 3rem 4rem 3rem;position:relative;z-index:2}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;margin-bottom:2rem}
+.hero-tag span{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
+.hero-tag::before{content:'';width:30px;height:1px;background:var(--gold)}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:700;line-height:1.05;color:var(--dark);margin-bottom:1.5rem}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero-desc{font-size:15px;color:var(--muted);line-height:1.9;max-width:400px;margin-bottom:2.5rem;font-weight:300}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--dark);color:var(--cream);border:none;padding:14px 32px;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .3s}
+.btn-primary:hover{background:var(--gold)}
+.btn-ghost{background:transparent;color:var(--dark);border:1px solid var(--border);padding:14px 32px;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .3s}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2rem;border-top:0.5px solid var(--border)}
+.stat-item span:first-child{display:block;font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:700;color:var(--gold)}
+.stat-item span:last-child{font-size:11px;color:var(--muted);letter-spacing:.5px;text-transform:uppercase}
+.hero-right{position:relative;overflow:hidden;background:var(--dark)}
+.hero-right-inner{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:3rem}
+.hero-img-bg{position:absolute;inset:0;background:linear-gradient(135deg,#1a1508 0%,#2d2410 40%,#111008 100%);opacity:1}
+.hero-pattern{position:absolute;inset:0;opacity:.08;background-image:repeating-linear-gradient(45deg,var(--gold2) 0,var(--gold2) 1px,transparent 0,transparent 50%);background-size:20px 20px}
+.hero-quote{position:relative;z-index:2;color:rgba(255,255,255,.9)}
+.hero-quote p{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;line-height:1.6;margin-bottom:1rem;color:var(--gold2)}
+.hero-quote small{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.hero-since{position:absolute;top:6rem;right:2rem;z-index:2;text-align:right}
+.hero-since span:first-child{display:block;font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:700;color:rgba(184,149,42,.15);line-height:1}
+.hero-since span:last-child{display:block;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.3)}
 
-/* ── SECTIONS ── */
-section{padding:3rem 2rem;border-bottom:0.5px solid var(--border)}
-.sec-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
-.sec-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--text);margin-bottom:2rem}
+/* ── SECTION COMMONS ── */
+.section{padding:5rem 3rem}
+.section-alt{background:var(--section)}
+.sec-eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;display:flex;align-items:center;gap:10px}
+.sec-eyebrow::after{content:'';flex:0 0 30px;height:1px;background:var(--gold)}
+.sec-heading{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:700;color:var(--dark);margin-bottom:1rem;line-height:1.15}
+.sec-sub{font-size:14px;color:var(--muted);max-width:500px;line-height:1.8;margin-bottom:3rem;font-weight:300}
 
 /* ── SERVICES ── */
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--border)}
-.svc-card{background:var(--white);padding:1.8rem 1.4rem;transition:background .2s}
-.svc-card:hover{background:var(--bg2)}
-.svc-icon{font-size:30px;color:var(--gold);margin-bottom:.8rem}
-.svc-name{font-weight:500;font-size:16px;margin-bottom:.5rem}
-.svc-desc{font-size:13px;color:var(--muted);line-height:1.7}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--border)}
+.svc-card{background:var(--bg);padding:2.5rem 2rem;transition:all .3s;position:relative;overflow:hidden;cursor:default}
+.svc-card::before{content:'';position:absolute;inset:0;background:var(--dark);transform:scaleY(0);transform-origin:bottom;transition:transform .4s cubic-bezier(.4,0,.2,1);z-index:0}
+.svc-card:hover::before{transform:scaleY(1)}
+.svc-card:hover .svc-icon,.svc-card:hover .svc-name,.svc-card:hover .svc-desc{color:var(--cream);position:relative;z-index:1}
+.svc-card:hover .svc-icon{color:var(--gold2)}
+.svc-icon{font-size:2rem;margin-bottom:1.2rem;transition:color .3s;color:var(--gold)}
+.svc-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;margin-bottom:.8rem;transition:color .3s}
+.svc-desc{font-size:13px;color:var(--muted);line-height:1.8;transition:color .3s;font-weight:300}
+.svc-num{position:absolute;top:1.5rem;right:1.8rem;font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;color:rgba(184,149,42,.08);transition:color .3s;z-index:0}
+.svc-card:hover .svc-num{color:rgba(255,255,255,.04)}
 
-/* ── PROJECTS ── */
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-.proj-card{background:var(--white);border:0.5px solid var(--border);border-radius:10px;overflow:hidden;transition:transform .2s}
-.proj-card:hover{transform:translateY(-3px)}
-.proj-thumb{height:110px;display:flex;align-items:center;justify-content:center}
-.proj-thumb.house{background:linear-gradient(135deg,#f5f0e8,#ede5d3)}
-.proj-thumb.hospital{background:linear-gradient(135deg,#e8f0f5,#d3e2ed)}
-.proj-thumb.hotel{background:linear-gradient(135deg,#f5eef0,#edd3da)}
-.proj-thumb.apt{background:linear-gradient(135deg,#edf5e8,#d3edda)}
-.proj-info{padding:1rem 1.2rem}
-.proj-type{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem}
-.proj-name{font-weight:500;font-size:15px}
-.proj-loc{font-size:12px;color:var(--muted);margin-top:3px}
+/* ── PORTFOLIO ── */
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.port-card{position:relative;overflow:hidden;background:var(--dark);border:0.5px solid var(--border);cursor:pointer;aspect-ratio:4/3}
+.port-img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.4,0,.2,1);display:block}
+.port-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a1508,#2d2410);transition:transform .6s;font-size:3rem;color:var(--gold2)}
+.port-card:hover .port-img,.port-card:hover .port-placeholder{transform:scale(1.06)}
+.port-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,transparent 50%);opacity:0;transition:opacity .4s}
+.port-card:hover .port-overlay{opacity:1}
+.port-info{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;transform:translateY(10px);opacity:0;transition:all .4s}
+.port-card:hover .port-info{transform:translateY(0);opacity:1}
+.port-type{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold2);margin-bottom:.4rem}
+.port-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:.2rem}
+.port-loc{font-size:12px;color:rgba(255,255,255,.6)}
+.port-ph-type{font-size:11px;letter-spacing:2px;color:rgba(212,175,90,.7);text-transform:uppercase;margin-top:.8rem}
 
 /* ── WHY US ── */
-.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-.why-card{padding:1.4rem;border:0.5px solid var(--border);border-radius:8px;border-left:3px solid var(--gold);border-top-left-radius:0;border-bottom-left-radius:0}
-.why-title{font-weight:500;font-size:15px;margin-bottom:.5rem}
-.why-text{font-size:13px;color:var(--muted);line-height:1.7}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border)}
+.why-card{background:var(--bg);padding:2.5rem;position:relative;overflow:hidden}
+.why-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:width .4s}
+.why-card:hover::after{width:100%}
+.why-num{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:700;color:rgba(184,149,42,.1);position:absolute;top:1rem;right:2rem;line-height:1}
+.why-icon{font-size:1.5rem;color:var(--gold);margin-bottom:1rem}
+.why-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;margin-bottom:.6rem}
+.why-text{font-size:13px;color:var(--muted);line-height:1.8;font-weight:300}
 
 /* ── TOOLS ── */
-.tools-tabs{display:flex;border-bottom:0.5px solid var(--border);background:var(--bg2);border-radius:8px 8px 0 0;overflow:hidden}
-.ttab{flex:1;padding:14px 8px;font-size:13px;font-weight:500;font-family:'DM Sans',sans-serif;background:transparent;border:none;border-bottom:2px solid transparent;color:var(--muted);cursor:pointer;transition:all .2s}
-.ttab.active{color:var(--gold);border-bottom-color:var(--gold);background:var(--white)}
-.tools-body{background:var(--white);border:0.5px solid var(--border);border-top:none;border-radius:0 0 8px 8px;padding:2rem}
+.tools-tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:2rem}
+.ttab{flex:1;padding:14px;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-family:'DM Sans',sans-serif;background:transparent;border:none;border-bottom:2px solid transparent;color:var(--muted);cursor:pointer;transition:all .2s}
+.ttab.active{color:var(--gold);border-bottom-color:var(--gold)}
 .tpanel{display:none}
 .tpanel.active{display:block}
 .field{margin-bottom:1.2rem}
-.field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px;font-weight:500}
-.field input,.field select{width:100%;padding:10px 14px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--text);background:var(--bg);border:0.5px solid var(--border);border-radius:6px}
+.field label{display:block;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.field input,.field select{width:100%;padding:12px 16px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--text);background:var(--white);border:1px solid var(--border);transition:border-color .2s}
 .field input:focus,.field select:focus{outline:none;border-color:var(--gold)}
-.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.calc-btn{width:100%;padding:12px;background:var(--gold);color:#fff;font-size:15px;font-weight:500;font-family:'DM Sans',sans-serif;border:none;border-radius:6px;cursor:pointer;margin-top:.5rem}
-.calc-btn:hover{opacity:.88}
-.result-box{margin-top:1.5rem;background:var(--bg2);border:0.5px solid var(--border);border-radius:8px;padding:1.5rem;display:none}
+.field-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.calc-btn{width:100%;padding:13px;background:var(--dark);color:var(--cream);font-size:11px;letter-spacing:2px;text-transform:uppercase;font-family:'DM Sans',sans-serif;border:none;cursor:pointer;margin-top:.5rem;transition:background .3s}
+.calc-btn:hover{background:var(--gold)}
+.result-box{margin-top:1.5rem;border:1px solid var(--border);padding:1.5rem;display:none;background:var(--white)}
 .result-box.show{display:block}
-.result-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
-.result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
-.result-card{background:var(--white);border:0.5px solid var(--border);border-radius:6px;padding:1rem;text-align:center}
-.result-card .rv{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--gold);display:block}
-.result-card .rl{font-size:12px;color:var(--muted);margin-top:3px}
-.result-note{font-size:12px;color:var(--muted);margin-top:1rem;line-height:1.6;padding-top:1rem;border-top:0.5px solid var(--border)}
-.range-row{display:flex;align-items:center;gap:10px}
-.range-row input[type=range]{flex:1}
-.mat-table{width:100%;border-collapse:collapse;margin-top:.5rem}
-.mat-table th{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 10px;border-bottom:0.5px solid var(--border);background:var(--bg2)}
-.mat-table td{font-size:14px;padding:10px 10px;border-bottom:0.5px solid var(--border)}
-.mat-table tr:last-child td{border-bottom:none}
-.mat-table td:last-child{font-weight:500;color:var(--gold);text-align:right}
+.result-top{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.result-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.r-card{background:var(--section);padding:1rem;text-align:center}
+.r-val{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--gold);display:block}
+.r-lbl{font-size:11px;color:var(--muted);margin-top:2px;letter-spacing:.3px}
+.r-note{font-size:12px;color:var(--muted);margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);line-height:1.6}
+.range-wrap{display:flex;gap:12px;align-items:center}
+.range-wrap input[type=range]{flex:1;accent-color:var(--gold)}
+.mat-tbl{width:100%;border-collapse:collapse;margin-top:.5rem}
+.mat-tbl th{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 12px;border-bottom:1px solid var(--border);background:var(--section)}
+.mat-tbl td{font-size:14px;padding:10px 12px;border-bottom:0.5px solid var(--border)}
+.mat-tbl td:last-child{font-weight:500;color:var(--gold);text-align:right}
 
 /* ── CONTACT ── */
-.contact-box{background:var(--bg2);border-radius:10px;padding:2rem;border:0.5px solid var(--border)}
-.contact-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem}
-.ci{display:flex;align-items:flex-start;gap:12px}
-.ci-icon{font-size:22px;color:var(--gold);margin-top:2px}
-.ci-label{font-size:12px;color:var(--muted);margin-bottom:2px}
-.ci-val{font-size:15px;font-weight:500}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
-.pi-input{background:var(--white);border:0.5px solid var(--border);border-radius:6px;padding:11px 14px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--text);width:100%}
+.contact-wrap{display:grid;grid-template-columns:1fr 1.4fr;gap:0;background:var(--dark)}
+.contact-left{padding:4rem 3rem;background:var(--dark);position:relative;overflow:hidden}
+.contact-left::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(184,149,42,.05) 0,rgba(184,149,42,.05) 1px,transparent 0,transparent 50%);background-size:20px 20px}
+.contact-left h3{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:700;color:var(--cream);margin-bottom:2rem;position:relative;z-index:1}
+.ci{display:flex;align-items:flex-start;gap:14px;margin-bottom:1.8rem;position:relative;z-index:1}
+.ci-icon{font-size:1.2rem;color:var(--gold);margin-top:2px;flex-shrink:0}
+.ci-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:3px}
+.ci-val{font-size:14px;color:rgba(255,255,255,.85);line-height:1.6}
+.contact-right{padding:4rem 3rem;background:var(--cream)}
+.contact-right h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--dark);margin-bottom:2rem}
+.pi-input{width:100%;padding:12px 16px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--text);background:var(--white);border:1px solid var(--border);margin-bottom:12px;transition:border-color .2s}
 .pi-input:focus{outline:none;border-color:var(--gold)}
-textarea.pi-input{resize:none;height:90px}
-.submit-btn{background:var(--gold);color:#fff;border:none;padding:12px 28px;font-size:14px;font-family:'DM Sans',sans-serif;font-weight:500;border-radius:6px;cursor:pointer;margin-top:4px}
-.submit-btn:hover{opacity:.88}
+textarea.pi-input{height:100px;resize:none}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.submit-btn{background:var(--dark);color:var(--cream);border:none;padding:13px 28px;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .3s;width:100%;margin-top:4px}
+.submit-btn:hover{background:var(--gold)}
 .submit-btn:disabled{opacity:.5;cursor:not-allowed}
-.form-msg{font-size:13px;margin-top:10px;padding:10px 14px;border-radius:6px;display:none}
-.form-msg.success{background:#E1F5EE;color:#0F6E56;display:block}
-.form-msg.error{background:#FCEBEB;color:#B33030;display:block}
+.f-msg{font-size:13px;margin-top:10px;padding:10px 14px;display:none}
+.f-msg.ok{background:#E1F5EE;color:#0F6E56;display:block}
+.f-msg.err{background:#FCEBEB;color:#B33030;display:block}
 
 /* ── FOOTER ── */
-footer{padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;border-top:0.5px solid var(--border);background:var(--white);flex-wrap:wrap;gap:8px}
-.footer-copy{font-size:12px;color:var(--muted)}
-.footer-tag{font-size:13px;color:var(--gold);font-style:italic}
+footer{background:var(--dark);padding:2rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid rgba(255,255,255,.06)}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:18px;color:rgba(255,255,255,.8)}
+.footer-tag{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:var(--gold2)}
+.footer-copy{font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.5px}
 
-/* ── RESPONSIVE ── */
-@media(max-width:640px){
-  .hero h1{font-size:34px}
+/* ── EDIT PANEL ── */
+.edit-toggle{position:fixed;right:0;top:50%;transform:translateY(-50%);background:var(--gold);color:#fff;border:none;padding:12px 8px;cursor:pointer;z-index:300;writing-mode:vertical-lr;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-family:'DM Sans',sans-serif;border-radius:6px 0 0 6px;box-shadow:-3px 0 15px rgba(0,0,0,.15)}
+.edit-panel{position:fixed;right:-420px;top:0;bottom:0;width:420px;background:var(--white);z-index:400;overflow-y:auto;transition:right .4s cubic-bezier(.4,0,.2,1);box-shadow:-8px 0 40px rgba(0,0,0,.15);display:flex;flex-direction:column}
+.edit-panel.open{right:0}
+.ep-header{background:var(--dark);padding:1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.ep-title{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--cream)}
+.ep-close{background:none;border:none;color:rgba(255,255,255,.5);font-size:20px;cursor:pointer;padding:4px}
+.ep-close:hover{color:#fff}
+.ep-tabs{display:flex;border-bottom:1px solid var(--border);position:sticky;top:64px;background:var(--white);z-index:9}
+.ep-tab{flex:1;padding:12px 8px;font-size:11px;letter-spacing:1px;text-transform:uppercase;font-family:'DM Sans',sans-serif;background:transparent;border:none;border-bottom:2px solid transparent;color:var(--muted);cursor:pointer;transition:all .2s}
+.ep-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+.ep-body{padding:1.5rem;flex:1}
+.ep-section{display:none}
+.ep-section.active{display:block}
+.ep-field{margin-bottom:1rem}
+.ep-field label{display:block;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.ep-field input,.ep-field textarea,.ep-field select{width:100%;padding:9px 12px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--text);background:var(--section);border:1px solid var(--border);border-radius:0}
+.ep-field input:focus,.ep-field textarea:focus{outline:none;border-color:var(--gold)}
+.ep-field textarea{resize:vertical;min-height:70px}
+.ep-apply{width:100%;padding:11px;background:var(--dark);color:var(--cream);border:none;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-family:'DM Sans',sans-serif;cursor:pointer;margin-top:1rem;transition:background .2s}
+.ep-apply:hover{background:var(--gold)}
+.ep-divider{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin:1.5rem 0 1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+.proj-edit-card{background:var(--section);border:1px solid var(--border);padding:1rem;margin-bottom:1rem;position:relative}
+.proj-edit-card .pec-title{font-size:13px;font-weight:500;margin-bottom:.8rem;color:var(--dark)}
+.pec-del{position:absolute;top:.8rem;right:.8rem;background:none;border:none;color:#ccc;font-size:14px;cursor:pointer}
+.pec-del:hover{color:#e24b4b}
+.add-proj-btn{width:100%;padding:10px;background:transparent;border:1px dashed var(--border);font-size:12px;color:var(--muted);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;margin-top:.5rem}
+.add-proj-btn:hover{border-color:var(--gold);color:var(--gold)}
+.img-upload-area{border:1.5px dashed var(--border);padding:1rem;text-align:center;cursor:pointer;transition:border-color .2s;position:relative;background:var(--section)}
+.img-upload-area:hover{border-color:var(--gold)}
+.img-upload-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.img-upload-area p{font-size:12px;color:var(--muted);pointer-events:none}
+.img-preview{width:100%;height:80px;object-fit:cover;margin-top:8px;display:none}
+.ep-toast{background:var(--gold);color:#fff;padding:10px 16px;font-size:12px;letter-spacing:.5px;margin-top:10px;display:none;text-align:center}
+
+/* ── MOBILE ── */
+@media(max-width:768px){
+  nav{padding:1rem 1.2rem}
   .nav-links,.nav-cta{display:none}
   .hamburger{display:block}
-  nav{padding:1rem 1.2rem}
-  section,.hero{padding:2.5rem 1.2rem}
-  .contact-info-grid,.form-grid{grid-template-columns:1fr}
-  .field-row{grid-template-columns:1fr}
-  .tools-tabs .ttab span{font-size:12px}
+  .mob-menu{display:none;position:fixed;top:60px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--border);z-index:199;padding:1rem}
+  .mob-menu.open{display:flex;flex-direction:column;gap:0}
+  .mob-menu a{padding:14px 1.5rem;font-size:15px;color:var(--text);border-bottom:0.5px solid var(--border);cursor:pointer;text-decoration:none;display:block}
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-left{padding:6rem 1.5rem 3rem}
+  .hero h1{font-size:42px}
+  .hero-right{display:none}
+  .section{padding:3.5rem 1.5rem}
+  .why-grid{grid-template-columns:1fr}
+  .contact-wrap{grid-template-columns:1fr}
+  .contact-left,.contact-right{padding:2.5rem 1.5rem}
+  .f-row{grid-template-columns:1fr}
+  footer{padding:1.5rem 1.5rem;flex-direction:column;text-align:center}
+  .edit-panel{width:100%;right:-100%}
+  .hero-stats{gap:1.5rem}
+  .result-cards{grid-template-columns:1fr}
+  .field-2{grid-template-columns:1fr}
+  .sec-heading{font-size:28px}
 }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <div class="logo">
-    <span>Premsons Infra</span>
-    <span>Build with trust</span>
-    <span class="est">Since 2000 · Patna, Bihar</span>
+<nav id="main-nav">
+  <div class="logo-mark">
+    <span class="logo-main" id="site-name">Premsons Infra</span>
+    <span class="logo-sub" id="site-tagline">Build with trust</span>
+    <span class="logo-est">Since 2000 · Patna, Bihar</span>
   </div>
   <div class="nav-links">
-    <a onclick="scrollTo('services')">Services</a>
-    <a onclick="scrollTo('projects')">Projects</a>
-    <a onclick="scrollTo('tools')">Free Tools</a>
-    <a onclick="scrollTo('contact')">Contact</a>
+    <a onclick="goto('services')">Services</a>
+    <a onclick="goto('portfolio')">Projects</a>
+    <a onclick="goto('tools')">Free Tools</a>
+    <a onclick="goto('contact')">Contact</a>
   </div>
-  <button class="nav-cta" onclick="scrollTo('contact')">Free Quote</button>
-  <button class="hamburger" onclick="toggleMenu()">☰</button>
+  <button class="nav-cta" onclick="goto('contact')">Free Quote</button>
+  <button class="hamburger" onclick="toggleMob()">☰</button>
 </nav>
-<div class="mobile-menu" id="mob-menu">
-  <a onclick="scrollTo('services');toggleMenu()">Services</a>
-  <a onclick="scrollTo('projects');toggleMenu()">Projects</a>
-  <a onclick="scrollTo('tools');toggleMenu()">Free Tools</a>
-  <a onclick="scrollTo('contact');toggleMenu()">Contact / Free Quote</a>
+<div class="mob-menu" id="mob-menu">
+  <a onclick="goto('services');toggleMob()">Services</a>
+  <a onclick="goto('portfolio');toggleMob()">Projects</a>
+  <a onclick="goto('tools');toggleMob()">Free Tools</a>
+  <a onclick="goto('contact');toggleMob()">Contact / Quote</a>
 </div>
 
 <!-- HERO -->
-<div class="hero">
-  <div class="hero-bg"></div>
-  <div class="since-badge"><i class="ti ti-award"></i><span>25+ Years of Excellence — Since 2000</span></div>
-  <h1>We Build <em>Dreams</em><br>Into Reality</h1>
-  <p>Ghar ho, hospital ho, hotel ho ya apartment — Premsons Infra har project ko poori mehnat aur quality ke saath deliver karta hai. Bihar mein sabse trusted naam.</p>
-  <div class="hero-btns">
-    <button class="btn-dark" onclick="scrollTo('contact')">Get Free Quote</button>
-    <button class="btn-outline" onclick="scrollTo('projects')">Our Projects ↓</button>
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag"><span id="hero-badge">Bihar's Most Trusted Builders</span></div>
+    <h1 id="hero-h1">We Build<br><em>Dreams</em><br>Into Reality</h1>
+    <p class="hero-desc" id="hero-desc">Ghar ho, hospital ho, hotel ho ya apartment — Premsons Infra har project ko poori mehnat aur quality ke saath deliver karta hai.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="goto('contact')">Get Free Quote</button>
+      <button class="btn-ghost" onclick="goto('portfolio')">View Projects</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><span id="stat1-num">200+</span><span id="stat1-lbl">Projects Done</span></div>
+      <div class="stat-item"><span id="stat2-num">25+</span><span id="stat2-lbl">Years Experience</span></div>
+      <div class="stat-item"><span id="stat3-num">500+</span><span id="stat3-lbl">Happy Clients</span></div>
+    </div>
   </div>
-  <div class="hero-stats">
-    <div class="stat"><span>200+</span><span>Projects Completed</span></div>
-    <div class="stat"><span>25+</span><span>Years Experience</span></div>
-    <div class="stat"><span>500+</span><span>Happy Clients</span></div>
-    <div class="stat"><span>2000</span><span>Founded</span></div>
+  <div class="hero-right">
+    <div class="hero-img-bg"></div>
+    <div class="hero-pattern"></div>
+    <div class="hero-since">
+      <span>2000</span>
+      <span>Established</span>
+    </div>
+    <div class="hero-right-inner">
+      <div class="hero-quote">
+        <p id="hero-quote">"Har neev mein hai humara bharosa — har deewar mein humari mehnat."</p>
+        <small>Premsons Infra · Since 2000</small>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 
 <!-- SERVICES -->
-<section id="services">
-  <div class="sec-label">What We Do</div>
-  <div class="sec-title">Hamare Services</div>
-  <div class="services-grid">
+<section class="section" id="services">
+  <div class="sec-eyebrow">What We Build</div>
+  <h2 class="sec-heading">Hamare Services</h2>
+  <p class="sec-sub" id="services-sub">Bihar ke sabse experienced construction team ke saath apna dream project banao.</p>
+  <div class="services-grid" id="services-grid">
     <div class="svc-card">
-      <div class="svc-icon"><i class="ti ti-home"></i></div>
+      <span class="svc-num">01</span>
+      <div class="svc-icon">🏠</div>
       <div class="svc-name">Residential Homes</div>
       <div class="svc-desc">Sapno ka ghar banana humari speciality hai — budget mein, time par delivery guaranteed.</div>
     </div>
     <div class="svc-card">
-      <div class="svc-icon"><i class="ti ti-building-hospital"></i></div>
+      <span class="svc-num">02</span>
+      <div class="svc-icon">🏥</div>
       <div class="svc-name">Hospitals & Clinics</div>
       <div class="svc-desc">Medical-grade construction with all safety standards and compliance at the core.</div>
     </div>
     <div class="svc-card">
-      <div class="svc-icon"><i class="ti ti-building"></i></div>
+      <span class="svc-num">03</span>
+      <div class="svc-icon">🏨</div>
       <div class="svc-name">Hotels & Resorts</div>
       <div class="svc-desc">Hospitality spaces jo guests pe lasting impression chhode — beautiful aur durable.</div>
     </div>
     <div class="svc-card">
-      <div class="svc-icon"><i class="ti ti-building-skyscraper"></i></div>
+      <span class="svc-num">04</span>
+      <div class="svc-icon">🏢</div>
       <div class="svc-name">Apartments</div>
       <div class="svc-desc">Multi-story residential complexes with modern amenities aur strong RCC structure.</div>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="sec-label">Portfolio</div>
-  <div class="sec-title">Hamare Kuch Kaam</div>
-  <div class="projects-grid">
-    <div class="proj-card">
-      <div class="proj-thumb house"><i class="ti ti-home" style="font-size:44px;color:#C9A84C"></i></div>
-      <div class="proj-info">
-        <div class="proj-type">Residential</div>
-        <div class="proj-name">Sharma Residence</div>
-        <div class="proj-loc"><i class="ti ti-map-pin" style="font-size:12px"></i> Patna, Bihar</div>
-      </div>
-    </div>
-    <div class="proj-card">
-      <div class="proj-thumb hospital"><i class="ti ti-building-hospital" style="font-size:44px;color:#378ADD"></i></div>
-      <div class="proj-info">
-        <div class="proj-type">Healthcare</div>
-        <div class="proj-name">City Care Hospital</div>
-        <div class="proj-loc"><i class="ti ti-map-pin" style="font-size:12px"></i> Muzaffarpur, Bihar</div>
-      </div>
-    </div>
-    <div class="proj-card">
-      <div class="proj-thumb hotel"><i class="ti ti-building" style="font-size:44px;color:#D4537E"></i></div>
-      <div class="proj-info">
-        <div class="proj-type">Hospitality</div>
-        <div class="proj-name">Grand View Hotel</div>
-        <div class="proj-loc"><i class="ti ti-map-pin" style="font-size:12px"></i> Gaya, Bihar</div>
-      </div>
-    </div>
-    <div class="proj-card">
-      <div class="proj-thumb apt"><i class="ti ti-building-skyscraper" style="font-size:44px;color:#3A9E6A"></i></div>
-      <div class="proj-info">
-        <div class="proj-type">Apartment</div>
-        <div class="proj-name">Prem Heights</div>
-        <div class="proj-loc"><i class="ti ti-map-pin" style="font-size:12px"></i> Patna, Bihar</div>
-      </div>
-    </div>
+<!-- PORTFOLIO -->
+<section class="section section-alt" id="portfolio">
+  <div class="sec-eyebrow">Our Work</div>
+  <h2 class="sec-heading">Project Portfolio</h2>
+  <p class="sec-sub">Hamare kuch behtareen kaam — har project ek nayi kahani hai.</p>
+  <div class="portfolio-grid" id="portfolio-grid">
+    <!-- Rendered by JS -->
   </div>
 </section>
 
 <!-- WHY US -->
-<section>
-  <div class="sec-label">Why Choose Us</div>
-  <div class="sec-title">Hum Kyun Better Hain</div>
+<section class="section" id="whyus">
+  <div class="sec-eyebrow">Why Choose Us</div>
+  <h2 class="sec-heading">Hum Kyun Better Hain</h2>
+  <p class="sec-sub">25 saal ke experience ke saath hum deliver karte hain jo dusre sirf promise karte hain.</p>
   <div class="why-grid">
-    <div class="why-card">
-      <div class="why-title"><i class="ti ti-shield-check" style="color:var(--gold);margin-right:6px"></i>Quality Guaranteed</div>
-      <div class="why-text">ISI certified materials aur experienced skilled labor ke saath best-in-class construction quality.</div>
-    </div>
-    <div class="why-card">
-      <div class="why-title"><i class="ti ti-clock" style="color:var(--gold);margin-right:6px"></i>On-Time Delivery</div>
-      <div class="why-text">Hum deadline ko seriously lete hain — har project agreed time par complete hota hai.</div>
-    </div>
-    <div class="why-card">
-      <div class="why-title"><i class="ti ti-currency-rupee" style="color:var(--gold);margin-right:6px"></i>Transparent Pricing</div>
-      <div class="why-text">Koi hidden cost nahi — jo quote diya, wohi final price. Poori transparency guaranteed.</div>
-    </div>
-    <div class="why-card">
-      <div class="why-title"><i class="ti ti-award" style="color:var(--gold);margin-right:6px"></i>25 Saal ka Bharosa</div>
-      <div class="why-text">Since 2000 se Bihar mein trusted construction partner — hazaron khushhal families aur businesses.</div>
-    </div>
+    <div class="why-card"><span class="why-num">01</span><div class="why-icon">🛡️</div><div class="why-title">Quality Guaranteed</div><div class="why-text">ISI certified materials aur experienced skilled labor ke saath best-in-class construction quality, har baar.</div></div>
+    <div class="why-card"><span class="why-num">02</span><div class="why-icon">⏰</div><div class="why-title">On-Time Delivery</div><div class="why-text">Hum deadline seriously lete hain — har project agreed timeline pe complete hota hai, koi excuse nahi.</div></div>
+    <div class="why-card"><span class="why-num">03</span><div class="why-icon">💰</div><div class="why-title">Transparent Pricing</div><div class="why-text">Koi hidden cost nahi — jo quote diya wohi final price. Poori transparency aur honesty guaranteed.</div></div>
+    <div class="why-card"><span class="why-num">04</span><div class="why-icon">🏆</div><div class="why-title">25 Saal ka Bharosa</div><div class="why-text">Since 2000 se Bihar mein trusted name — hazaron khushhal families aur successful commercial projects.</div></div>
   </div>
 </section>
 
 <!-- FREE TOOLS -->
-<section id="tools">
-  <div class="sec-label">Free Tools</div>
-  <div class="sec-title">Construction Calculators</div>
+<section class="section section-alt" id="tools">
+  <div class="sec-eyebrow">Free Tools</div>
+  <h2 class="sec-heading">Construction Calculators</h2>
+  <p class="sec-sub">Apna budget, EMI aur material — bilkul free mein calculate karo.</p>
   <div class="tools-tabs">
-    <button class="ttab active" onclick="switchTool('cost',this)"><i class="ti ti-calculator"></i> <span>Cost Calculator</span></button>
-    <button class="ttab" onclick="switchTool('emi',this)"><i class="ti ti-currency-rupee"></i> <span>EMI Calculator</span></button>
-    <button class="ttab" onclick="switchTool('mat',this)"><i class="ti ti-package"></i> <span>Material Estimator</span></button>
+    <button class="ttab active" onclick="switchTool('cost',this)">Cost Calculator</button>
+    <button class="ttab" onclick="switchTool('emi',this)">EMI Calculator</button>
+    <button class="ttab" onclick="switchTool('mat',this)">Material Estimator</button>
   </div>
-  <div class="tools-body">
-
-    <!-- Cost -->
-    <div class="tpanel active" id="tpanel-cost">
-      <div class="field-row">
-        <div class="field"><label>Plot Area (sq ft)</label><input type="number" id="c-area" placeholder="e.g. 1000"></div>
-        <div class="field"><label>Number of Floors</label>
-          <select id="c-floors"><option value="1">1 Floor (G)</option><option value="2">2 Floors (G+1)</option><option value="3">3 Floors (G+2)</option><option value="4">4 Floors (G+3)</option></select>
-        </div>
-      </div>
-      <div class="field"><label>Construction Quality</label>
-        <select id="c-quality"><option value="1400">Basic (₹1,400/sq ft)</option><option value="1800" selected>Standard (₹1,800/sq ft)</option><option value="2400">Premium (₹2,400/sq ft)</option><option value="3200">Luxury (₹3,200/sq ft)</option></select>
-      </div>
-      <div class="field"><label>Project Type</label>
-        <select id="c-type"><option value="1.0">Residential House</option><option value="1.15">Apartment Building</option><option value="1.25">Hospital / Clinic</option><option value="1.2">Hotel / Commercial</option></select>
-      </div>
-      <button class="calc-btn" onclick="calcCost()">Calculate Cost →</button>
-      <div class="result-box" id="cost-res">
-        <div class="result-label">Estimated Construction Cost</div>
-        <div class="result-grid">
-          <div class="result-card"><span class="rv" id="r-min">—</span><span class="rl">Minimum (₹)</span></div>
-          <div class="result-card"><span class="rv" id="r-est">—</span><span class="rl">Estimated (₹)</span></div>
-          <div class="result-card"><span class="rv" id="r-max">—</span><span class="rl">Maximum (₹)</span></div>
-        </div>
-        <div class="result-note">* Yeh sirf estimate hai. Actual cost site visit ke baad confirm hogi. <strong>Free site visit ke liye call karein: +91 91623 58831</strong></div>
-      </div>
+  <div class="tpanel active" id="tp-cost">
+    <div class="field-2">
+      <div class="field"><label>Plot Area (sq ft)</label><input type="number" id="c-area" placeholder="e.g. 1000"></div>
+      <div class="field"><label>Number of Floors</label><select id="c-floors"><option value="1">1 Floor (G)</option><option value="2">2 Floors (G+1)</option><option value="3">3 Floors (G+2)</option><option value="4">4 Floors (G+3)</option></select></div>
     </div>
-
-    <!-- EMI -->
-    <div class="tpanel" id="tpanel-emi">
-      <div class="field"><label>Loan Amount (₹)</label><input type="number" id="e-loan" placeholder="e.g. 2500000"></div>
-      <div class="field"><label>Interest Rate — <span id="e-rv" style="color:var(--gold);font-weight:500">8.5%</span></label>
-        <div class="range-row"><input type="range" id="e-rate" min="6" max="18" step="0.1" value="8.5" oninput="document.getElementById('e-rv').textContent=parseFloat(this.value).toFixed(1)+'%'"></div>
-      </div>
-      <div class="field"><label>Loan Tenure — <span id="e-tv" style="color:var(--gold);font-weight:500">20 Years</span></label>
-        <div class="range-row"><input type="range" id="e-tenure" min="1" max="30" step="1" value="20" oninput="document.getElementById('e-tv').textContent=this.value+' Years'"></div>
-      </div>
-      <button class="calc-btn" onclick="calcEMI()">Calculate EMI →</button>
-      <div class="result-box" id="emi-res">
-        <div class="result-label">EMI Breakdown</div>
-        <div class="result-grid">
-          <div class="result-card"><span class="rv" id="r-emi">—</span><span class="rl">Monthly EMI (₹)</span></div>
-          <div class="result-card"><span class="rv" id="r-int">—</span><span class="rl">Total Interest (₹)</span></div>
-          <div class="result-card"><span class="rv" id="r-tot">—</span><span class="rl">Total Payable (₹)</span></div>
-        </div>
-        <div class="result-note">* Standard reducing balance formula. Actual bank terms alag ho sakti hain. Construction loan guidance ke liye call karein: <strong>+91 91623 58831</strong></div>
-      </div>
+    <div class="field-2">
+      <div class="field"><label>Construction Quality</label><select id="c-quality"><option value="1400">Basic (₹1,400/sqft)</option><option value="1800" selected>Standard (₹1,800/sqft)</option><option value="2400">Premium (₹2,400/sqft)</option><option value="3200">Luxury (₹3,200/sqft)</option></select></div>
+      <div class="field"><label>Project Type</label><select id="c-type"><option value="1.0">Residential House</option><option value="1.15">Apartment</option><option value="1.25">Hospital/Clinic</option><option value="1.2">Hotel/Commercial</option></select></div>
     </div>
-
-    <!-- Material -->
-    <div class="tpanel" id="tpanel-mat">
-      <div class="field-row">
-        <div class="field"><label>Built-up Area (sq ft)</label><input type="number" id="m-area" placeholder="e.g. 1000"></div>
-        <div class="field"><label>Number of Floors</label>
-          <select id="m-floors"><option value="1">1 Floor</option><option value="2">2 Floors</option><option value="3">3 Floors</option><option value="4">4 Floors</option></select>
-        </div>
-      </div>
-      <div class="field"><label>Construction Type</label>
-        <select id="m-type"><option value="normal">Normal Construction</option><option value="rcc">RCC Frame Structure</option><option value="load">Load Bearing Structure</option></select>
-      </div>
-      <button class="calc-btn" onclick="calcMat()">Estimate Materials →</button>
-      <div class="result-box" id="mat-res">
-        <div class="result-label">Material Requirements</div>
-        <table class="mat-table">
-          <thead><tr><th>Material</th><th>Unit</th><th style="text-align:right">Quantity</th></tr></thead>
-          <tbody id="mat-tbody"></tbody>
-        </table>
-        <div class="result-note">* Approximate quantities. Actual requirement design aur soil condition pe depend karti hai. Exact estimate ke liye: <strong>+91 91623 58831</strong></div>
-      </div>
+    <button class="calc-btn" onclick="calcCost()">Calculate Cost →</button>
+    <div class="result-box" id="cr"><div class="result-top">Estimated Cost</div><div class="result-cards"><div class="r-card"><span class="r-val" id="r-min">—</span><span class="r-lbl">Minimum</span></div><div class="r-card"><span class="r-val" id="r-est">—</span><span class="r-lbl">Estimated</span></div><div class="r-card"><span class="r-val" id="r-max">—</span><span class="r-lbl">Maximum</span></div></div><div class="r-note">* Sirf estimate. Actual cost site visit ke baad. Free visit: <strong>+91 91623 58831</strong></div></div>
+  </div>
+  <div class="tpanel" id="tp-emi">
+    <div class="field"><label>Loan Amount (₹)</label><input type="number" id="e-loan" placeholder="e.g. 2500000"></div>
+    <div class="field"><label>Interest Rate — <span id="e-rv" style="color:var(--gold)">8.5%</span></label><div class="range-wrap"><input type="range" id="e-rate" min="6" max="18" step="0.1" value="8.5" oninput="document.getElementById('e-rv').textContent=parseFloat(this.value).toFixed(1)+'%'"></div></div>
+    <div class="field"><label>Loan Tenure — <span id="e-tv" style="color:var(--gold)">20 Years</span></label><div class="range-wrap"><input type="range" id="e-tenure" min="1" max="30" step="1" value="20" oninput="document.getElementById('e-tv').textContent=this.value+' Years'"></div></div>
+    <button class="calc-btn" onclick="calcEMI()">Calculate EMI →</button>
+    <div class="result-box" id="er"><div class="result-top">EMI Breakdown</div><div class="result-cards"><div class="r-card"><span class="r-val" id="r-emi">—</span><span class="r-lbl">Monthly EMI</span></div><div class="r-card"><span class="r-val" id="r-int">—</span><span class="r-lbl">Total Interest</span></div><div class="r-card"><span class="r-val" id="r-tot">—</span><span class="r-lbl">Total Payable</span></div></div><div class="r-note">* Standard formula. Actual bank terms vary. Help ke liye call: <strong>+91 91623 58831</strong></div></div>
+  </div>
+  <div class="tpanel" id="tp-mat">
+    <div class="field-2">
+      <div class="field"><label>Built-up Area (sq ft)</label><input type="number" id="m-area" placeholder="e.g. 1000"></div>
+      <div class="field"><label>Floors</label><select id="m-floors"><option value="1">1 Floor</option><option value="2">2 Floors</option><option value="3">3 Floors</option><option value="4">4 Floors</option></select></div>
     </div>
+    <div class="field"><label>Construction Type</label><select id="m-type"><option value="normal">Normal Construction</option><option value="rcc">RCC Frame Structure</option><option value="load">Load Bearing</option></select></div>
+    <button class="calc-btn" onclick="calcMat()">Estimate Materials →</button>
+    <div class="result-box" id="mr"><div class="result-top">Material Requirements</div><table class="mat-tbl"><thead><tr><th>Material</th><th>Unit</th><th style="text-align:right">Qty</th></tr></thead><tbody id="mat-tb"></tbody></table><div class="r-note">* Approximate. Actual as per design. Free estimate: <strong>+91 91623 58831</strong></div></div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="sec-label">Get In Touch</div>
-  <div class="sec-title">Humse Sampark Karein</div>
-  <div class="contact-box">
-    <div class="contact-info-grid">
-      <div class="ci">
-        <div class="ci-icon"><i class="ti ti-phone"></i></div>
-        <div><div class="ci-label">Call / WhatsApp</div><div class="ci-val">+91 91623 58831</div></div>
-      </div>
-      <div class="ci">
-        <div class="ci-icon"><i class="ti ti-clock"></i></div>
-        <div><div class="ci-label">Working Hours</div><div class="ci-val">Mon–Sat, 9am – 6pm</div></div>
-      </div>
-      <div class="ci" style="grid-column:1/-1">
-        <div class="ci-icon"><i class="ti ti-map-pin"></i></div>
-        <div><div class="ci-label">Office Address</div><div class="ci-val">New Atwarpur, Yadavchak, Kurthaul, Patna – 804453, Bihar</div></div>
-      </div>
+  <div class="contact-wrap">
+    <div class="contact-left">
+      <h3>Humse Baat Karo</h3>
+      <div class="ci"><span class="ci-icon">📞</span><div><div class="ci-label">Call / WhatsApp</div><div class="ci-val" id="c-phone">+91 91623 58831</div></div></div>
+      <div class="ci"><span class="ci-icon">📍</span><div><div class="ci-label">Office Address</div><div class="ci-val" id="c-addr">New Atwarpur, Yadavchak,<br>Kurthaul, Patna – 804453, Bihar</div></div></div>
+      <div class="ci"><span class="ci-icon">🕐</span><div><div class="ci-label">Working Hours</div><div class="ci-val">Monday – Saturday<br>9:00 AM – 6:00 PM</div></div></div>
     </div>
-    <div class="form-grid">
-      <input class="pi-input" type="text" id="f-name" placeholder="Aapka naam *">
-      <input class="pi-input" type="tel" id="f-phone" placeholder="Phone number *">
+    <div class="contact-right">
+      <h3>Free Quote Lein</h3>
+      <div class="f-row">
+        <input class="pi-input" type="text" id="f-name" placeholder="Aapka naam *">
+        <input class="pi-input" type="tel" id="f-phone" placeholder="Phone number *">
+      </div>
+      <input class="pi-input" type="text" id="f-proj" placeholder="Project type (Ghar / Hospital / Hotel / Apartment)">
+      <textarea class="pi-input" id="f-msg" placeholder="Apna project describe karein..."></textarea>
+      <button class="submit-btn" id="sub-btn" onclick="submitForm()">Send Request</button>
+      <div class="f-msg" id="f-msg-el"></div>
     </div>
-    <input class="pi-input" type="text" id="f-project" placeholder="Project type (Ghar / Hospital / Hotel / Apartment)" style="margin-bottom:12px">
-    <textarea class="pi-input" id="f-msg" placeholder="Apna project describe karein..."></textarea>
-    <br>
-    <button class="submit-btn" id="submit-btn" onclick="submitForm()">Send Request ↗</button>
-    <div class="form-msg" id="form-msg"></div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-copy">© 2025 Premsons Infra · Patna, Bihar · Since 2000 · +91 91623 58831</div>
-  <div class="footer-tag">"Har Neev Mein Hai Humara Bharosa"</div>
+  <span class="footer-logo">Premsons Infra</span>
+  <span class="footer-tag">"Har Neev Mein Hai Humara Bharosa"</span>
+  <span class="footer-copy">© 2025 Premsons Infra · Patna, Bihar · Since 2000</span>
 </footer>
 
+<!-- EDIT TOGGLE -->
+<button class="edit-toggle" onclick="toggleEdit()">✏ Edit</button>
+
+<!-- EDIT PANEL -->
+<div class="edit-panel" id="edit-panel">
+  <div class="ep-header">
+    <span class="ep-title">Website Editor</span>
+    <button class="ep-close" onclick="toggleEdit()">✕</button>
+  </div>
+  <div class="ep-tabs">
+    <button class="ep-tab active" onclick="epTab('info',this)">Info</button>
+    <button class="ep-tab" onclick="epTab('portfolio',this)">Portfolio</button>
+    <button class="ep-tab" onclick="epTab('contact',this)">Contact</button>
+  </div>
+  <div class="ep-body">
+
+    <!-- INFO TAB -->
+    <div class="ep-section active" id="ep-info">
+      <div class="ep-divider">Hero Section</div>
+      <div class="ep-field"><label>Company Name</label><input type="text" id="ep-name" value="Premsons Infra"></div>
+      <div class="ep-field"><label>Tagline</label><input type="text" id="ep-tagline" value="Build with trust"></div>
+      <div class="ep-field"><label>Hero Heading</label><input type="text" id="ep-h1" value="We Build Dreams Into Reality"></div>
+      <div class="ep-field"><label>Hero Description</label><textarea id="ep-desc">Ghar ho, hospital ho, hotel ho ya apartment — Premsons Infra har project ko poori mehnat aur quality ke saath deliver karta hai.</textarea></div>
+      <div class="ep-field"><label>Hero Quote</label><textarea id="ep-quote">"Har neev mein hai humara bharosa — har deewar mein humari mehnat."</textarea></div>
+      <div class="ep-divider">Stats</div>
+      <div class="ep-field"><label>Stat 1 Number</label><input type="text" id="ep-s1n" value="200+"></div>
+      <div class="ep-field"><label>Stat 1 Label</label><input type="text" id="ep-s1l" value="Projects Done"></div>
+      <div class="ep-field"><label>Stat 2 Number</label><input type="text" id="ep-s2n" value="25+"></div>
+      <div class="ep-field"><label>Stat 2 Label</label><input type="text" id="ep-s2l" value="Years Experience"></div>
+      <div class="ep-field"><label>Stat 3 Number</label><input type="text" id="ep-s3n" value="500+"></div>
+      <div class="ep-field"><label>Stat 3 Label</label><input type="text" id="ep-s3l" value="Happy Clients"></div>
+      <button class="ep-apply" onclick="applyInfo()">Apply Changes ✓</button>
+      <div class="ep-toast" id="ep-toast">✓ Changes applied!</div>
+    </div>
+
+    <!-- PORTFOLIO TAB -->
+    <div class="ep-section" id="ep-portfolio">
+      <div class="ep-divider">Projects</div>
+      <div id="proj-list"></div>
+      <button class="add-proj-btn" onclick="addProject()">+ Add New Project</button>
+      <button class="ep-apply" onclick="renderPortfolio();showToast()">Apply Changes ✓</button>
+      <div class="ep-toast" id="ep-toast2">✓ Portfolio updated!</div>
+    </div>
+
+    <!-- CONTACT TAB -->
+    <div class="ep-section" id="ep-contact">
+      <div class="ep-divider">Contact Info</div>
+      <div class="ep-field"><label>Phone / WhatsApp</label><input type="text" id="ep-phone" value="+91 91623 58831"></div>
+      <div class="ep-field"><label>Address</label><textarea id="ep-addr">New Atwarpur, Yadavchak, Kurthaul, Patna – 804453, Bihar</textarea></div>
+      <div class="ep-divider">Backend API (optional)</div>
+      <div class="ep-field"><label>Render URL</label><input type="text" id="ep-api" value="https://premsons-infra.onrender.com" placeholder="https://your-app.onrender.com"></div>
+      <button class="ep-apply" onclick="applyContact()">Apply Changes ✓</button>
+      <div class="ep-toast" id="ep-toast3">✓ Contact updated!</div>
+    </div>
+  </div>
+</div>
+
 <script>
-// ── CONFIG — Yahan apna Railway URL daalo deploy ke baad ──
-const API_URL = 'https://YOUR-RAILWAY-URL.up.railway.app';
-// Example: const API_URL = 'https://premsons-backend-production.up.railway.app';
+// ── DATA ──────────────────────────────────────────────────
+let projects = [
+  {id:1,name:'Sharma Residence',type:'Residential',loc:'Patna, Bihar',desc:'3BHK luxury villa with modern interiors and strong RCC structure.',img:'',icon:'🏠'},
+  {id:2,name:'City Care Hospital',type:'Healthcare',loc:'Muzaffarpur, Bihar',desc:'Multi-specialty hospital with all medical-grade safety standards.',img:'',icon:'🏥'},
+  {id:3,name:'Grand View Hotel',type:'Hospitality',loc:'Gaya, Bihar',desc:'4-star hotel with 80 rooms, conference hall and restaurant.',img:'',icon:'🏨'},
+  {id:4,name:'Prem Heights',type:'Apartment',loc:'Patna, Bihar',desc:'G+5 apartment complex with 30 units, parking and modern amenities.',img:'',icon:'🏢'},
+];
+let apiUrl = 'https://premsons-infra.onrender.com';
 
-// ── NAV ──
-function scrollTo(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth'})}
-function toggleMenu(){document.getElementById('mob-menu').classList.toggle('open')}
+// ── NAV ──────────────────────────────────────────────────
+function goto(id){
+  var el = document.getElementById(id);
+  if(!el) return;
+  var navH = document.getElementById('main-nav').offsetHeight || 70;
+  var top = el.getBoundingClientRect().top + window.pageYOffset - navH - 20;
+  window.scrollTo({top: top, behavior: 'smooth'});
+}
+function toggleMob(){
+  document.getElementById('mob-menu').classList.toggle('open');
+}
 
-// ── TOOLS ──
+// ── PORTFOLIO RENDER ──────────────────────────────────────
+function renderPortfolio(){
+  const grid = document.getElementById('portfolio-grid');
+  grid.innerHTML = projects.map(p => `
+    <div class="port-card">
+      ${p.img
+        ? `<img class="port-img" src="${p.img}" alt="${p.name}">`
+        : `<div class="port-placeholder">${p.icon}<div class="port-ph-type">${p.type}</div></div>`
+      }
+      <div class="port-overlay"></div>
+      <div class="port-info">
+        <div class="port-type">${p.type}</div>
+        <div class="port-name">${p.name}</div>
+        <div class="port-loc">📍 ${p.loc}</div>
+      </div>
+    </div>
+  `).join('');
+}
+renderPortfolio();
+
+// ── EDIT PANEL ────────────────────────────────────────────
+function toggleEdit(){
+  document.getElementById('edit-panel').classList.toggle('open');
+}
+
+function epTab(name, el){
+  document.querySelectorAll('.ep-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.ep-section').forEach(s=>s.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('ep-'+name).classList.add('active');
+  if(name==='portfolio') renderProjEditor();
+}
+
+function showToast(id){
+  const t = document.getElementById(id||'ep-toast');
+  t.style.display='block';
+  setTimeout(()=>t.style.display='none',2500);
+}
+
+function applyInfo(){
+  document.getElementById('site-name').textContent = document.getElementById('ep-name').value;
+  document.getElementById('site-tagline').textContent = document.getElementById('ep-tagline').value;
+  const h1 = document.getElementById('ep-h1').value;
+  const words = h1.split(' ');
+  const mid = Math.floor(words.length/2);
+  document.getElementById('hero-h1').innerHTML = words.slice(0,mid).join(' ')+'<br><em>'+words[mid]+'</em><br>'+words.slice(mid+1).join(' ');
+  document.getElementById('hero-desc').textContent = document.getElementById('ep-desc').value;
+  document.getElementById('hero-quote').textContent = document.getElementById('ep-quote').value;
+  document.getElementById('stat1-num').textContent = document.getElementById('ep-s1n').value;
+  document.getElementById('stat1-lbl').textContent = document.getElementById('ep-s1l').value;
+  document.getElementById('stat2-num').textContent = document.getElementById('ep-s2n').value;
+  document.getElementById('stat2-lbl').textContent = document.getElementById('ep-s2l').value;
+  document.getElementById('stat3-num').textContent = document.getElementById('ep-s3n').value;
+  document.getElementById('stat3-lbl').textContent = document.getElementById('ep-s3l').value;
+  showToast('ep-toast');
+}
+
+function applyContact(){
+  const phone = document.getElementById('ep-phone').value;
+  const addr  = document.getElementById('ep-addr').value;
+  document.getElementById('c-phone').textContent = phone;
+  document.getElementById('c-addr').innerHTML = addr.replace(/\n/g,'<br>');
+  apiUrl = document.getElementById('ep-api').value.trim().replace(/\/$/,'');
+  showToast('ep-toast3');
+}
+
+// ── PROJECT EDITOR ────────────────────────────────────────
+function renderProjEditor(){
+  const list = document.getElementById('proj-list');
+  list.innerHTML = projects.map((p,i) => `
+    <div class="proj-edit-card" id="pec-${p.id}">
+      <button class="pec-del" onclick="deleteProj(${p.id})">🗑</button>
+      <div class="pec-title">Project ${i+1}</div>
+      <div class="ep-field"><label>Project Name</label><input type="text" id="pn-${p.id}" value="${p.name}"></div>
+      <div class="ep-field"><label>Type</label>
+        <select id="pt-${p.id}">
+          <option ${p.type==='Residential'?'selected':''}>Residential</option>
+          <option ${p.type==='Healthcare'?'selected':''}>Healthcare</option>
+          <option ${p.type==='Hospitality'?'selected':''}>Hospitality</option>
+          <option ${p.type==='Apartment'?'selected':''}>Apartment</option>
+          <option ${p.type==='Commercial'?'selected':''}>Commercial</option>
+        </select>
+      </div>
+      <div class="ep-field"><label>Location</label><input type="text" id="pl-${p.id}" value="${p.loc}"></div>
+      <div class="ep-field"><label>Description</label><textarea id="pd-${p.id}">${p.desc}</textarea></div>
+      <div class="ep-field">
+        <label>Photo Upload</label>
+        <div class="img-upload-area" onclick="triggerUpload(${p.id})">
+          <input type="file" id="pf-${p.id}" accept="image/*" onchange="handleImg(${p.id},this)">
+          <p>${p.img ? '✓ Photo uploaded — click to change' : '📷 Click to upload photo'}</p>
+          ${p.img ? `<img class="img-preview" src="${p.img}" style="display:block">` : ''}
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function triggerUpload(id){
+  document.getElementById('pf-'+id).click();
+}
+
+function handleImg(id, input){
+  const file = input.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const idx = projects.findIndex(p=>p.id===id);
+    if(idx>-1){
+      projects[idx].img = e.target.result;
+      renderProjEditor();
+      renderPortfolio();
+    }
+  };
+  reader.readAsDataURL(file);
+}
+
+function saveProj(id){
+  const idx = projects.findIndex(p=>p.id===id);
+  if(idx>-1){
+    projects[idx].name = document.getElementById('pn-'+id).value;
+    projects[idx].type = document.getElementById('pt-'+id).value;
+    projects[idx].loc  = document.getElementById('pl-'+id).value;
+    projects[idx].desc = document.getElementById('pd-'+id).value;
+  }
+}
+
+function deleteProj(id){
+  if(confirm('Is project ko delete karo?')){
+    projects = projects.filter(p=>p.id!==id);
+    renderProjEditor();
+    renderPortfolio();
+  }
+}
+
+function addProject(){
+  const newId = Date.now();
+  projects.push({id:newId,name:'New Project',type:'Residential',loc:'Bihar',desc:'Project description yahan likho.',img:'',icon:'🏗️'});
+  renderProjEditor();
+  renderPortfolio();
+  document.getElementById('pec-'+newId)?.scrollIntoView({behavior:'smooth'});
+}
+
+// Save on input change
+document.addEventListener('input', e => {
+  const m = e.target.id?.match(/^(pn|pt|pl|pd)-(\d+)$/);
+  if(m) {
+    const id = parseInt(m[2]);
+    const idx = projects.findIndex(p=>p.id===id);
+    if(idx>-1){
+      const key = {pn:'name',pt:'type',pl:'loc',pd:'desc'}[m[1]];
+      projects[idx][key] = e.target.value;
+    }
+  }
+});
+
+// ── TOOLS ────────────────────────────────────────────────
 function switchTool(name,el){
   document.querySelectorAll('.ttab').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('.tpanel').forEach(p=>p.classList.remove('active'));
+  ['cost','emi','mat'].forEach(n=>document.getElementById('tp-'+n).classList.remove('active'));
   el.classList.add('active');
-  document.getElementById('tpanel-'+name).classList.add('active');
+  document.getElementById('tp-'+name).classList.add('active');
 }
-
 function fmt(n){
-  if(n>=10000000) return (n/10000000).toFixed(2)+' Cr';
-  if(n>=100000) return (n/100000).toFixed(2)+' L';
-  return Math.round(n).toLocaleString('en-IN');
+  if(n>=10000000) return '₹'+(n/10000000).toFixed(2)+' Cr';
+  if(n>=100000) return '₹'+(n/100000).toFixed(2)+' L';
+  return '₹'+Math.round(n).toLocaleString('en-IN');
 }
-
 function calcCost(){
-  const area=parseFloat(document.getElementById('c-area').value)||0;
-  if(!area){alert('Plot area daalen!');return;}
-  const floors=parseFloat(document.getElementById('c-floors').value);
-  const rate=parseFloat(document.getElementById('c-quality').value);
-  const mult=parseFloat(document.getElementById('c-type').value);
-  const est=area*floors*rate*mult;
-  document.getElementById('r-min').textContent='₹'+fmt(est*.85);
-  document.getElementById('r-est').textContent='₹'+fmt(est);
-  document.getElementById('r-max').textContent='₹'+fmt(est*1.15);
-  document.getElementById('cost-res').classList.add('show');
+  const a=parseFloat(document.getElementById('c-area').value)||0;
+  if(!a){alert('Plot area daalen!');return;}
+  const f=parseFloat(document.getElementById('c-floors').value);
+  const r=parseFloat(document.getElementById('c-quality').value);
+  const m=parseFloat(document.getElementById('c-type').value);
+  const e=a*f*r*m;
+  document.getElementById('r-min').textContent=fmt(e*.85);
+  document.getElementById('r-est').textContent=fmt(e);
+  document.getElementById('r-max').textContent=fmt(e*1.15);
+  document.getElementById('cr').classList.add('show');
 }
-
 function calcEMI(){
   const P=parseFloat(document.getElementById('e-loan').value)||0;
   if(!P){alert('Loan amount daalen!');return;}
   const r=parseFloat(document.getElementById('e-rate').value)/12/100;
   const n=parseFloat(document.getElementById('e-tenure').value)*12;
   const emi=P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
-  const total=emi*n;
-  document.getElementById('r-emi').textContent='₹'+fmt(Math.round(emi));
-  document.getElementById('r-int').textContent='₹'+fmt(Math.round(total-P));
-  document.getElementById('r-tot').textContent='₹'+fmt(Math.round(total));
-  document.getElementById('emi-res').classList.add('show');
+  const tot=emi*n;
+  document.getElementById('r-emi').textContent=fmt(Math.round(emi));
+  document.getElementById('r-int').textContent=fmt(Math.round(tot-P));
+  document.getElementById('r-tot').textContent=fmt(Math.round(tot));
+  document.getElementById('er').classList.add('show');
 }
-
 function calcMat(){
-  const area=parseFloat(document.getElementById('m-area').value)||0;
-  if(!area){alert('Area daalen!');return;}
-  const floors=parseFloat(document.getElementById('m-floors').value);
-  const type=document.getElementById('m-type').value;
-  const total=area*floors;
-  const m={normal:{cement:.4,sand:.6,agg:.45,bricks:8,steel:3.5,water:200},rcc:{cement:.45,sand:.5,agg:.5,bricks:6,steel:5,water:220},load:{cement:.35,sand:.65,agg:.4,bricks:11,steel:2,water:180}}[type];
-  const rows=[['Cement','Bags (50kg)',Math.round(total*m.cement)],['River Sand','Cu ft',Math.round(total*m.sand)],['Aggregate (Gitti)','Cu ft',Math.round(total*m.agg)],['Bricks','Nos.',Math.round(total*m.bricks)],['Steel (TMT Bar)','kg',Math.round(total*m.steel)],['Water','Litres',Math.round(total*m.water)]];
-  document.getElementById('mat-tbody').innerHTML=rows.map(r=>`<tr><td>${r[0]}</td><td style="color:var(--muted);font-size:13px">${r[1]}</td><td>${r[2].toLocaleString('en-IN')}</td></tr>`).join('');
-  document.getElementById('mat-res').classList.add('show');
+  const a=parseFloat(document.getElementById('m-area').value)||0;
+  if(!a){alert('Area daalen!');return;}
+  const f=parseFloat(document.getElementById('m-floors').value);
+  const t=document.getElementById('m-type').value;
+  const total=a*f;
+  const m={normal:{c:.4,s:.6,g:.45,b:8,st:3.5,w:200},rcc:{c:.45,s:.5,g:.5,b:6,st:5,w:220},load:{c:.35,s:.65,g:.4,b:11,st:2,w:180}}[t];
+  document.getElementById('mat-tb').innerHTML=[
+    ['Cement','Bags (50kg)',Math.round(total*m.c)],
+    ['River Sand','Cu ft',Math.round(total*m.s)],
+    ['Aggregate (Gitti)','Cu ft',Math.round(total*m.g)],
+    ['Bricks','Nos.',Math.round(total*m.b)],
+    ['Steel (TMT Bar)','kg',Math.round(total*m.st)],
+    ['Water','Litres',Math.round(total*m.w)],
+  ].map(r=>`<tr><td>${r[0]}</td><td style="color:var(--muted);font-size:12px">${r[1]}</td><td>${r[2].toLocaleString('en-IN')}</td></tr>`).join('');
+  document.getElementById('mr').classList.add('show');
 }
 
-// ── CONTACT FORM ──
+// ── CONTACT FORM ──────────────────────────────────────────
 async function submitForm(){
   const name=document.getElementById('f-name').value.trim();
   const phone=document.getElementById('f-phone').value.trim();
-  const project=document.getElementById('f-project').value.trim();
-  const message=document.getElementById('f-msg').value.trim();
-  const msgEl=document.getElementById('form-msg');
-  const btn=document.getElementById('submit-btn');
-
-  msgEl.className='form-msg';msgEl.style.display='none';
-
-  if(!name||!phone){msgEl.textContent='Naam aur phone number zaroori hai!';msgEl.className='form-msg error';return;}
-
-  btn.disabled=true;btn.textContent='Sending...';
-
-  try{
-    const res=await fetch(API_URL+'/api/inquiry',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({name,phone,project,message})
-    });
-    const data=await res.json();
-    if(data.success){
-      msgEl.textContent='✅ '+data.message;
-      msgEl.className='form-msg success';
-      document.getElementById('f-name').value='';
-      document.getElementById('f-phone').value='';
-      document.getElementById('f-project').value='';
-      document.getElementById('f-msg').value='';
-    } else {
-      msgEl.textContent='❌ '+data.message;
-      msgEl.className='form-msg error';
-    }
-  } catch(e){
-    msgEl.textContent='❌ Server se connect nahi ho paya. Seedha call karein: +91 91623 58831';
-    msgEl.className='form-msg error';
+  const proj=document.getElementById('f-proj').value.trim();
+  const msg=document.getElementById('f-msg').value.trim();
+  const el=document.getElementById('f-msg-el');
+  const btn=document.getElementById('sub-btn');
+  el.className='f-msg';
+  if(!name||!phone){el.textContent='Naam aur phone zaroori hai!';el.className='f-msg err';return;}
+  if(apiUrl){
+    btn.disabled=true;btn.textContent='Sending...';
+    try{
+      const res=await fetch(apiUrl+'/api/inquiry',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,phone,project:proj,message:msg})});
+      const data=await res.json();
+      el.textContent=data.success?'✅ '+data.message:'❌ '+data.message;
+      el.className='f-msg '+(data.success?'ok':'err');
+      if(data.success){document.getElementById('f-name').value='';document.getElementById('f-phone').value='';document.getElementById('f-proj').value='';document.getElementById('f-msg').value='';}
+    }catch{el.textContent='❌ Server se connect nahi hua. Call karein: +91 91623 58831';el.className='f-msg err';}
+    btn.disabled=false;btn.textContent='Send Request';
+  } else {
+    el.textContent='✅ Shukriya '+name+'! Hum jald sampark karenge. Call bhi kar sakte hain: +91 91623 58831';
+    el.className='f-msg ok';
+    document.getElementById('f-name').value='';document.getElementById('f-phone').value='';document.getElementById('f-proj').value='';document.getElementById('f-msg').value='';
   }
-  btn.disabled=false;btn.textContent='Send Request ↗';
 }
 </script>
 </body>
