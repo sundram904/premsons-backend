@@ -7,6 +7,13 @@ const rateLimit = require('express-rate-limit');
 const path = require('path');
 
 const app = express();
+const path = require("path");
+
+app.use(express.static(__dirname));
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
 const PORT = process.env.PORT || 3000;
 const JWT_SECRET = process.env.JWT_SECRET || 'premsons-secret-2024-change-this';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'premsons@2024';
