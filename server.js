@@ -7,7 +7,7 @@ const rateLimit = require('express-rate-limit');
 const path = require('path');
 
 const app = express();
-const path = require("path");
+
 
 app.use(express.static(__dirname));
 
